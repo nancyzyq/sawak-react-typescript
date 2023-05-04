@@ -10,7 +10,6 @@ import { updateMenu, updateFilteredMenu, updateMenuItem, updateIngredients, upda
 
 export const getMenuItems = () => async (dispatch: Dispatch) => {
     try {
-        console.log('action')
         // let re = await menuAPI.fetch()
         // re.map((i) => {
         //     let ingredients = i.ingredients.map((j) => j.name)

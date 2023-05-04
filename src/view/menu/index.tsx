@@ -15,13 +15,20 @@ interface HomeProps {
     getMenuItems: () => void
 
 }
+interface Car {
+  model: string;
+  make: string;
+  year: number;
+  colour?: string;
+  doors?: number;
+}
 
 class Menu extends React.Component<HomeProps> {
   componentDidMount () {
 		this.props.getMenuItems()
-    setTimeout(() => {
-      console.log(this.props.menu)
-    }, 1000)
+    // setTimeout(() => {
+    //   console.log(this.props.menu)
+    // }, 1000)
   }
   render() {
     return (
