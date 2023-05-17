@@ -1,6 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+export interface Ingredient {
+    _id?: string,
+    id: string,
+    name: string,
+    type: string,
+    created?: Date,
+    updated?: Date
+}
+
+export interface Category {
+    _id?: string
+    id : string,
+    name: string,
+    created?: Date,
+    updated?: Date
+
+}
+
+export interface MenuItem {
+    _id: string,
+    id: string,
+    name: string,
+    price: string,
+    number: string,
+    type: Category,
+    ingredients: Ingredient[]
+
+}
+
 interface MenuState {
     menu: Array<Object>,
     filteredMenu: Array<Object>,
