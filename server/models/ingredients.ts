@@ -13,7 +13,7 @@ const ingredientSchema = new Schema<IIngredient> (
     id: { type: String, required: true },
     name: { type: String, required: true},
     type: { type: String, required: true },
-    created: { type: Date, default: Date.now()},
+    created: { type: Date, default: Date.now},
     updated:{ type: Date, default: Date.now }
 },
 {

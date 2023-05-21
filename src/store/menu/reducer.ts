@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-export interface Ingredient {
+export interface IIngredient {
     _id?: string,
     id: string,
     name: string,
@@ -10,7 +10,7 @@ export interface Ingredient {
     updated?: Date
 }
 
-export interface Category {
+export interface ICategory {
     _id?: string
     id : string,
     name: string,
@@ -19,29 +19,31 @@ export interface Category {
 
 }
 
-export interface MenuItem {
+export interface IMenuItem {
     _id: string,
     id: string,
     name: string,
     price: string,
     number: string,
-    type: Category,
-    ingredients: Ingredient[]
+    type: ICategory,
+    ingredients: IIngredient[],
+    created?: Date,
+    updated?: Date
 
 }
 
 interface MenuState {
-    menu: Array<Object>,
-    filteredMenu: Array<Object>,
-    menuItem: Object,
-    ingredients: Array<Object>,
-    categories: Array<Object>
+    menu: IMenuItem[],
+    filteredMenu: IMenuItem[],
+    menuItem: IMenuItem | null,
+    ingredients: IIngredient[],
+    categories: ICategory[]
 }
 
 const initialState = {
     menu: [],
     filteredMenu: [],
-    menuItem: {},
+    menuItem: null,
     ingredients: [],
     categories: []
 } as MenuState
@@ -49,27 +51,20 @@ const initialState = {
 const menuSlice = createSlice({
     name: 'menu',
     initialState,
-    // initialState: {
-    //     menu: [],
-    //     filteredMenu: [],
-    //     menuItem: {},
-    //     ingredients: [],
-    //     categories: []
-    // },
     reducers: {
-        updateMenu: (state, action: PayloadAction<Array<Object>>) => {
+        updateMenu: (state, action: PayloadAction<Array<IMenuItem>>) => {
             state.menu = action.payload
         },
-        updateFilteredMenu: (state, action: PayloadAction<Array<Object>>) => {
+        updateFilteredMenu: (state, action: PayloadAction<Array<IMenuItem>>) => {
             state.filteredMenu = action.payload
         },
-        updateMenuItem: (state, action: PayloadAction<Object>) => {
+        updateMenuItem: (state, action: PayloadAction<IMenuItem>) => {
             state.menuItem = action.payload
         },
-        updateIngredients: (state, action: PayloadAction<Array<Object>>) => {
+        updateIngredients: (state, action: PayloadAction<Array<IIngredient>>) => {
             state.ingredients = action.payload
         },
-        updateCategories: (state, action: PayloadAction<Array<Object>>) => {
+        updateCategories: (state, action: PayloadAction<Array<ICategory>>) => {
             state.categories = action.payload
         }
     }

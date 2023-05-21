@@ -19,7 +19,7 @@ const menuitemSchema = new Schema<IMenuItem>(
     price: {type: String, required: true},
     number: { type: String, required: true},
     ingredients: [{type: Schema.Types.ObjectId, ref: 'ingredients'}],
-    created: { type: Date, default: Date.now()},
+    created: { type: Date, default: Date.now},
     updated:{ type: Date, default: Date.now }
 
 })

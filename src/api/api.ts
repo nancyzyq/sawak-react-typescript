@@ -12,14 +12,14 @@ export class API {
     }
 
     async fetch<T> (query?: query) : Promise<T[]> {
-        let data : T[]
+        let data
         if (query) {
             let queryString = encodeQuery(query)
             data = await axios.get(`http://54.206.204.237/api/${this.name}?${query}`)
         } else {
             data = await axios.get(`http://54.206.204.237/api/${this.name}`)
         }
-        return data
+        return data.data
     }
 
 }

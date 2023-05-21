@@ -2,7 +2,7 @@
 import { Dispatch } from 'redux';
 import { API } from '../../api/api';
 // import {API} from '../../api/api'
-import { updateMenu, updateFilteredMenu, updateMenuItem, updateIngredients, updateCategories, Ingredient, MenuItem } from './reducer'
+import { updateMenu, updateFilteredMenu, updateMenuItem, updateIngredients, updateCategories, IIngredient, IMenuItem } from './reducer'
 // import { showToast } from '../home/action'
 // const { v4: uuidv4 } = require('uuid')
 // const menuAPI = new API('menuitem')
@@ -18,14 +18,14 @@ export const getMenuItems = () => async (dispatch: Dispatch) => {
         //     let ingredients = i.ingredients.map((j) => j.name)
         //     i.ingredients = ingredients.join(', ')
         // })
-        let re = await menuAPI.fetch<MenuItem>()
-        console.log(re)
-        let menu = [
-            {name: 'satay noodel chicken', price: 12.5},
-            {name: 'satay noodel chicken', price: 12.5},
-            {name: 'satay noodel chicken', price: 12.5},
-            {name: 'satay noodel chicken', price: 12.5}
-        ]
+        let menu = await menuAPI.fetch<IMenuItem>()
+        // console.log(menu)
+        // let menu = [
+        //     {name: 'satay noodel chicken', price: 12.5},
+        //     {name: 'satay noodel chicken', price: 12.5},
+        //     {name: 'satay noodel chicken', price: 12.5},
+        //     {name: 'satay noodel chicken', price: 12.5}
+        // ]
         dispatch(updateMenu(menu))
         dispatch(updateFilteredMenu(menu))
     } catch (err) {

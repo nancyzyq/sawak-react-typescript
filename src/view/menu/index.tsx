@@ -4,31 +4,22 @@ import { connect } from 'react-redux'
 // import { Dispatch } from 'redux';
 import { RootState } from '../../store';
 import { getMenuItems } from '../../store/menu/action'
+import { IMenuItem } from '../../store/menu/reducer';
 // import { Carousel } from '../../components/Carousel';
 // import Nav from '../../components/Nav'
 // import Footer from '../../components/Footer'
-// import MenuCardList from './MenuCardList'
+import MenuCardList from './MenuCardList'
 // import MenuFilter from './MenuFilter';
 
-interface HomeProps {
-    menu: Array<Object>,
+interface MenuProps {
+    menu: Array<IMenuItem>,
     getMenuItems: () => void
 
 }
-interface Car {
-  model: string;
-  make: string;
-  year: number;
-  colour?: string;
-  doors?: number;
-}
 
-class Menu extends React.Component<HomeProps> {
+class Menu extends React.Component<MenuProps> {
   componentDidMount () {
 		this.props.getMenuItems()
-    // setTimeout(() => {
-    //   console.log(this.props.menu)
-    // }, 1000)
   }
   render() {
     return (
@@ -43,7 +34,7 @@ class Menu extends React.Component<HomeProps> {
           {/* <MenuFilter /> */}
           {/* <hr className="mb-5" /> */}
           {/* menu items list  */}
-          {/* <MenuCardList menu={this.props.menu} /> */}
+          <MenuCardList menu={this.props.menu} />
         </div>
         {/* <Footer /> */}
       </div>
